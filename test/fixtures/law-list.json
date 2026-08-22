@@ -1,0 +1,272 @@
+[
+  {
+    "createdDate": "2023-07-06T07:16:04.0149127Z",
+    "customerId": "21a1461e-cf39-a95a-4587-c0ee9f015046",
+    "etag": "\"719b2991-3cc6-32b8-2fc9-b7cf740a8de0\"",
+    "features": {
+      "enableLogAccessUsingOnlyResourcePermissions": true,
+      "legacy": 0,
+      "searchVersion": 1
+    },
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/DefaultResourceGroup-WEU/providers/Microsoft.OperationalInsights/workspaces/DefaultWorkspace-00000000-0000-0000-0000-000000000001-WEU",
+    "location": "eastus",
+    "modifiedDate": "2024-07-02T15:39:40.6455563Z",
+    "name": "DefaultWorkspace-00000000-0000-0000-0000-000000000001-WEU",
+    "provisioningState": "Succeeded",
+    "publicNetworkAccessForIngestion": "Enabled",
+    "publicNetworkAccessForQuery": "Enabled",
+    "resourceGroup": "DefaultResourceGroup-WEU",
+    "retentionInDays": 30,
+    "sku": {
+      "lastSkuUpdate": "2023-07-06T07:16:04.0149127Z",
+      "name": "pergb2018"
+    },
+    "type": "Microsoft.OperationalInsights/workspaces",
+    "workspaceCapping": {
+      "dailyQuotaGb": -1.0,
+      "dataIngestionStatus": "RespectQuota",
+      "quotaNextResetTime": "2024-07-03T06:00:00Z"
+    }
+  },
+  {
+    "createdDate": "2024-07-30T08:39:48.9659216Z",
+    "customerId": "6d0c7678-c259-dca4-e4d5-08e466914b4b",
+    "etag": "\"703afea5-e1fb-8bfe-c7f6-83d0be5d0b94\"",
+    "features": {
+      "enableLogAccessUsingOnlyResourcePermissions": true,
+      "legacy": 0,
+      "searchVersion": 1
+    },
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/access-review-rg/providers/Microsoft.OperationalInsights/workspaces/workspaceaccessreviewrg9d71",
+    "location": "eastus",
+    "modifiedDate": "2024-07-30T08:39:50.3590237Z",
+    "name": "workspaceaccessreviewrg9d71",
+    "provisioningState": "Succeeded",
+    "publicNetworkAccessForIngestion": "Enabled",
+    "publicNetworkAccessForQuery": "Enabled",
+    "resourceGroup": "access-review-rg",
+    "retentionInDays": 30,
+    "sku": {
+      "lastSkuUpdate": "2024-07-30T08:39:48.9659216Z",
+      "name": "PerGB2018"
+    },
+    "type": "Microsoft.OperationalInsights/workspaces",
+    "workspaceCapping": {
+      "dailyQuotaGb": -1.0,
+      "dataIngestionStatus": "RespectQuota",
+      "quotaNextResetTime": "2024-07-30T15:00:00Z"
+    }
+  },
+  {
+    "createdDate": "2024-10-02T11:36:37.0145957Z",
+    "customerId": "91ddbe44-995a-ce32-649d-bfa6f9d8031f",
+    "etag": "\"ce3c252e-546a-a4e5-981c-05abae5cda4e\"",
+    "features": {
+      "enableLogAccessUsingOnlyResourcePermissions": true,
+      "legacy": 0,
+      "searchVersion": 1
+    },
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/container-apps-sentinel/providers/Microsoft.OperationalInsights/workspaces/workspacecontainerappssentinela291",
+    "location": "eastus",
+    "modifiedDate": "2025-09-26T12:34:40.375535Z",
+    "name": "workspacecontainerappssentinela291",
+    "provisioningState": "Succeeded",
+    "publicNetworkAccessForIngestion": "Enabled",
+    "publicNetworkAccessForQuery": "Enabled",
+    "resourceGroup": "container-apps-sentinel",
+    "retentionInDays": 30,
+    "sku": {
+      "lastSkuUpdate": "2024-10-02T11:36:37.0145957Z",
+      "name": "PerGB2018"
+    },
+    "type": "Microsoft.OperationalInsights/workspaces",
+    "workspaceCapping": {
+      "dailyQuotaGb": -1.0,
+      "dataIngestionStatus": "RespectQuota",
+      "quotaNextResetTime": "2025-09-27T02:00:00Z"
+    }
+  },
+  {
+    "createdDate": "2025-05-10T18:37:25.7911029Z",
+    "customerId": "3c535b68-173a-1ab6-e9f3-01972551ebbd",
+    "etag": "\"12f3ccb7-ff56-1197-fc9f-0bb7062c38ef\"",
+    "features": {
+      "enableLogAccessUsingOnlyResourcePermissions": true,
+      "legacy": 0,
+      "searchVersion": 1
+    },
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/ai_jiraaudit4vmxslnw2refq_34b8c8c0-8ce3-51c3-6ab1-c158914c2e62_managed/providers/Microsoft.OperationalInsights/workspaces/managed-jiraaudit4vmxslnw2refq-ws",
+    "location": "eastus",
+    "modifiedDate": "2025-05-10T18:37:29.3660711Z",
+    "name": "managed-jiraaudit4vmxslnw2refq-ws",
+    "provisioningState": "Succeeded",
+    "publicNetworkAccessForIngestion": "Enabled",
+    "publicNetworkAccessForQuery": "Enabled",
+    "resourceGroup": "ai_jiraaudit4vmxslnw2refq_34b8c8c0-8ce3-51c3-6ab1-c158914c2e62_managed",
+    "retentionInDays": 30,
+    "sku": {
+      "lastSkuUpdate": "2025-05-10T18:37:25.7911029Z",
+      "name": "PerGB2018"
+    },
+    "tags": {},
+    "type": "Microsoft.OperationalInsights/workspaces",
+    "workspaceCapping": {
+      "dailyQuotaGb": -1.0,
+      "dataIngestionStatus": "RespectQuota",
+      "quotaNextResetTime": "2025-05-11T09:00:00Z"
+    }
+  },
+  {
+    "createdDate": "2025-05-10T18:37:38.1493715Z",
+    "customerId": "592e2189-2bb6-bd32-eeee-bebfdec22ffd",
+    "etag": "\"341c7852-8b60-dc17-6fe3-fab9da23aa8a\"",
+    "features": {
+      "enableLogAccessUsingOnlyResourcePermissions": true,
+      "legacy": 0,
+      "searchVersion": 1
+    },
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/ai_slackaudit4vmxslnw2refq_18265d6e-c23a-f7ff-d06f-e477c5c68c05_managed/providers/Microsoft.OperationalInsights/workspaces/managed-slackaudit4vmxslnw2refq-ws",
+    "location": "eastus",
+    "modifiedDate": "2025-05-10T18:37:41.2444305Z",
+    "name": "managed-slackaudit4vmxslnw2refq-ws",
+    "provisioningState": "Succeeded",
+    "publicNetworkAccessForIngestion": "Enabled",
+    "publicNetworkAccessForQuery": "Enabled",
+    "resourceGroup": "ai_slackaudit4vmxslnw2refq_18265d6e-c23a-f7ff-d06f-e477c5c68c05_managed",
+    "retentionInDays": 30,
+    "sku": {
+      "lastSkuUpdate": "2025-05-10T18:37:38.1493715Z",
+      "name": "PerGB2018"
+    },
+    "tags": {},
+    "type": "Microsoft.OperationalInsights/workspaces",
+    "workspaceCapping": {
+      "dailyQuotaGb": -1.0,
+      "dataIngestionStatus": "RespectQuota",
+      "quotaNextResetTime": "2025-05-10T21:00:00Z"
+    }
+  },
+  {
+    "createdDate": "2025-07-03T13:12:13.4302901Z",
+    "customerId": "092c067f-970d-0128-108c-1979a9dcba3c",
+    "etag": "\"391fba25-7a19-f65d-3d27-5a0c073b132d\"",
+    "features": {
+      "enableLogAccessUsingOnlyResourcePermissions": true,
+      "legacy": 0,
+      "searchVersion": 1
+    },
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/echo-server/providers/Microsoft.OperationalInsights/workspaces/workspaceechoserveraaa3",
+    "location": "eastus",
+    "modifiedDate": "2025-07-03T13:12:16.9550823Z",
+    "name": "workspaceechoserveraaa3",
+    "provisioningState": "Succeeded",
+    "publicNetworkAccessForIngestion": "Enabled",
+    "publicNetworkAccessForQuery": "Enabled",
+    "resourceGroup": "echo-server",
+    "retentionInDays": 30,
+    "sku": {
+      "lastSkuUpdate": "2025-07-03T13:12:13.4302901Z",
+      "name": "PerGB2018"
+    },
+    "type": "Microsoft.OperationalInsights/workspaces",
+    "workspaceCapping": {
+      "dailyQuotaGb": -1.0,
+      "dataIngestionStatus": "RespectQuota",
+      "quotaNextResetTime": "2025-07-04T12:00:00Z"
+    }
+  },
+  {
+    "createdDate": "2026-08-03T23:36:31.5869878Z",
+    "customerId": "7154f2b9-c90c-4176-9eb2-260a997257db",
+    "etag": "\"2338dd03-1568-0cbd-f0b3-658a66e7e46d\"",
+    "features": {
+      "enableLogAccessUsingOnlyResourcePermissions": true,
+      "legacy": 0,
+      "searchVersion": 1
+    },
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg-aperture-demo-weu/providers/Microsoft.OperationalInsights/workspaces/law-aperture-demo-weu",
+    "location": "eastus",
+    "modifiedDate": "2026-08-03T23:36:43.9777769Z",
+    "name": "law-aperture-demo-weu",
+    "provisioningState": "Succeeded",
+    "publicNetworkAccessForIngestion": "Enabled",
+    "publicNetworkAccessForQuery": "Enabled",
+    "resourceGroup": "rg-aperture-demo-weu",
+    "retentionInDays": 30,
+    "sku": {
+      "lastSkuUpdate": "2026-08-03T23:36:31.5869878Z",
+      "name": "PerGB2018"
+    },
+    "tags": {
+      "environment": "demo",
+      "managedBy": "aperture",
+      "owner": "admin",
+      "purpose": "canary"
+    },
+    "type": "Microsoft.OperationalInsights/workspaces",
+    "workspaceCapping": {
+      "dailyQuotaGb": -1.0,
+      "dataIngestionStatus": "RespectQuota",
+      "quotaNextResetTime": "2026-08-04T15:00:00Z"
+    }
+  },
+  {
+    "createdDate": "2026-08-19T00:28:05.0479582Z",
+    "customerId": "f619c0c8-19ed-56be-72ea-005a969f7e50",
+    "etag": "\"e461515b-3459-9a47-cfa2-6b6f6a43cba8\"",
+    "features": {
+      "enableLogAccessUsingOnlyResourcePermissions": true,
+      "legacy": 0,
+      "searchVersion": 1
+    },
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/security-hub-dev/providers/Microsoft.OperationalInsights/workspaces/sh-dev-law-iu5jkrevjby7k",
+    "location": "eastus",
+    "modifiedDate": "2026-08-19T01:13:49.9852473Z",
+    "name": "sh-dev-law-iu5jkrevjby7k",
+    "provisioningState": "Succeeded",
+    "publicNetworkAccessForIngestion": "Enabled",
+    "publicNetworkAccessForQuery": "Enabled",
+    "resourceGroup": "security-hub-dev",
+    "retentionInDays": 30,
+    "sku": {
+      "lastSkuUpdate": "2026-08-19T00:28:05.0479582Z",
+      "name": "PerGB2018"
+    },
+    "type": "Microsoft.OperationalInsights/workspaces",
+    "workspaceCapping": {
+      "dailyQuotaGb": -1.0,
+      "dataIngestionStatus": "RespectQuota",
+      "quotaNextResetTime": "2026-08-19T02:00:00Z"
+    }
+  },
+  {
+    "createdDate": "2023-02-09T20:17:30.4572287Z",
+    "customerId": "20238bad-2f2c-afc0-5235-1d2e46f3134c",
+    "etag": "\"39196f30-b4f3-c564-b8cf-0c2381c380fb\"",
+    "features": {
+      "enableLogAccessUsingOnlyResourcePermissions": true,
+      "legacy": 0,
+      "searchVersion": 1
+    },
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/security_logs/providers/Microsoft.OperationalInsights/workspaces/main-security-log-analytics-workspace",
+    "location": "eastus",
+    "modifiedDate": "2024-08-01T12:26:17.6157978Z",
+    "name": "main-security-log-analytics-workspace",
+    "provisioningState": "Succeeded",
+    "publicNetworkAccessForIngestion": "Enabled",
+    "publicNetworkAccessForQuery": "Enabled",
+    "resourceGroup": "security_logs",
+    "retentionInDays": 180,
+    "sku": {
+      "lastSkuUpdate": "2023-02-09T20:17:30.4572287Z",
+      "name": "pergb2018"
+    },
+    "tags": {},
+    "type": "Microsoft.OperationalInsights/workspaces",
+    "workspaceCapping": {
+      "dailyQuotaGb": -1.0,
+      "dataIngestionStatus": "RespectQuota",
+      "quotaNextResetTime": "2024-08-01T18:00:00Z"
+    }
+  }
+]

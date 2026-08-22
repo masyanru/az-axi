@@ -1,0 +1,72 @@
+[
+  {
+    "createdAt": "2025-03-05T01:54:20.9240708Z",
+    "disableLocalAuth": false,
+    "geoDataReplication": {
+      "locations": [
+        {
+          "locationName": "eastus",
+          "roleType": "Primary"
+        }
+      ],
+      "maxReplicationLagDurationInSeconds": 0
+    },
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/poc-logstash/providers/Microsoft.EventHub/namespaces/poc-logstash-01",
+    "isAutoInflateEnabled": false,
+    "kafkaEnabled": true,
+    "location": "eastus",
+    "maximumThroughputUnits": 0,
+    "metricId": "00000000-0000-0000-0000-000000000001:poc-logstash-01",
+    "minimumTlsVersion": "1.2",
+    "name": "poc-logstash-01",
+    "provisioningState": "Succeeded",
+    "publicNetworkAccess": "Enabled",
+    "resourceGroup": "poc-logstash",
+    "serviceBusEndpoint": "https://poc-logstash-01.servicebus.windows.net:443/",
+    "sku": {
+      "capacity": 1,
+      "name": "Standard",
+      "tier": "Standard"
+    },
+    "status": "Active",
+    "tags": {},
+    "type": "Microsoft.EventHub/Namespaces",
+    "updatedAt": "2026-06-23T07:04:53Z",
+    "zoneRedundant": true
+  },
+  {
+    "createdAt": "2025-03-05T01:54:33.1548798Z",
+    "disableLocalAuth": false,
+    "geoDataReplication": {
+      "locations": [
+        {
+          "locationName": "eastus",
+          "roleType": "Primary"
+        }
+      ],
+      "maxReplicationLagDurationInSeconds": 0
+    },
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/tlk-security-eventhub-rg/providers/Microsoft.EventHub/namespaces/tlk-security-eventhub-ns",
+    "isAutoInflateEnabled": true,
+    "kafkaEnabled": true,
+    "location": "eastus",
+    "maximumThroughputUnits": 14,
+    "metricId": "00000000-0000-0000-0000-000000000001:tlk-security-eventhub-ns",
+    "minimumTlsVersion": "1.2",
+    "name": "tlk-security-eventhub-ns",
+    "provisioningState": "Succeeded",
+    "publicNetworkAccess": "Enabled",
+    "resourceGroup": "tlk-security-eventhub-rg",
+    "serviceBusEndpoint": "https://tlk-security-eventhub-ns.servicebus.windows.net:443/",
+    "sku": {
+      "capacity": 12,
+      "name": "Standard",
+      "tier": "Standard"
+    },
+    "status": "Active",
+    "tags": {},
+    "type": "Microsoft.EventHub/Namespaces",
+    "updatedAt": "2026-08-18T18:38:13.7524134Z",
+    "zoneRedundant": true
+  }
+]

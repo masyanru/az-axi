@@ -1,0 +1,25 @@
+{
+  "count": 3,
+  "data": [
+    {
+      "id": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg-app",
+      "name": "rg-app",
+      "type": "microsoft.resources/resourcegroups",
+      "location": "eastus"
+    },
+    {
+      "id": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg-app/providers/Microsoft.App/containerApps/api",
+      "name": "api",
+      "type": "microsoft.app/containerapps",
+      "location": "eastus"
+    },
+    {
+      "id": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg-app/providers/Microsoft.KeyVault/vaults/kv-app",
+      "name": "kv-app",
+      "type": "microsoft.keyvault/vaults",
+      "location": "eastus"
+    }
+  ],
+  "skip_token": null,
+  "total_records": 3
+}

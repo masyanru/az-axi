@@ -1,0 +1,91 @@
+[
+  {
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/security_logs/providers/Microsoft.KeyVault/vaults/onepasswordwhcrqf4w",
+    "location": "eastus",
+    "name": "onepasswordwhcrqf4w",
+    "resourceGroup": "security_logs",
+    "systemData": null,
+    "tags": {},
+    "type": "Microsoft.KeyVault/vaults"
+  },
+  {
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/apim-poc/providers/Microsoft.KeyVault/vaults/tlk-apim-kv-dev",
+    "location": "eastus",
+    "name": "tlk-apim-kv-dev",
+    "resourceGroup": "apim-poc",
+    "systemData": null,
+    "tags": {},
+    "type": "Microsoft.KeyVault/vaults"
+  },
+  {
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/container-apps-sentinel/providers/Microsoft.KeyVault/vaults/kv-slack-approver-toks",
+    "location": "eastus",
+    "name": "kv-slack-approver-toks",
+    "resourceGroup": "container-apps-sentinel",
+    "systemData": null,
+    "tags": {},
+    "type": "Microsoft.KeyVault/vaults"
+  },
+  {
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg-aperture-demo-weu/providers/Microsoft.KeyVault/vaults/kv-aperture-1e4de13b",
+    "location": "eastus",
+    "name": "kv-aperture-1e4de13b",
+    "resourceGroup": "rg-aperture-demo-weu",
+    "systemData": null,
+    "tags": {
+      "managedBy": "aperture",
+      "purpose": "platform-secrets"
+    },
+    "type": "Microsoft.KeyVault/vaults"
+  },
+  {
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg-aperture-workloads-weu/providers/Microsoft.KeyVault/vaults/kv-aperture-apps-1e4de",
+    "location": "eastus",
+    "name": "kv-aperture-apps-1e4de",
+    "resourceGroup": "rg-aperture-workloads-weu",
+    "systemData": null,
+    "tags": {
+      "managedBy": "aperture",
+      "purpose": "application-secrets"
+    },
+    "type": "Microsoft.KeyVault/vaults"
+  },
+  {
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/security-hub-dev/providers/Microsoft.KeyVault/vaults/shkvdeviu5jkrevjb",
+    "location": "eastus",
+    "name": "shkvdeviu5jkrevjb",
+    "resourceGroup": "security-hub-dev",
+    "systemData": null,
+    "tags": {},
+    "type": "Microsoft.KeyVault/vaults"
+  },
+  {
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/security_logs/providers/Microsoft.KeyVault/vaults/widgets-20238bad2f2cafc0",
+    "location": "eastus",
+    "name": "widgets-20238bad2f2cafc0",
+    "resourceGroup": "security_logs",
+    "systemData": null,
+    "tags": {
+      "WorkspaceId": "20238bad-2f2c-afc0-5235-1d2e46f3134c"
+    },
+    "type": "Microsoft.KeyVault/vaults"
+  },
+  {
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/kv-dev-security/providers/Microsoft.KeyVault/vaults/kv-dev-security",
+    "location": "eastus",
+    "name": "kv-dev-security",
+    "resourceGroup": "kv-dev-security",
+    "systemData": null,
+    "tags": {},
+    "type": "Microsoft.KeyVault/vaults"
+  },
+  {
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/masyan_vpn_rg/providers/Microsoft.KeyVault/vaults/kv-logicapp-security",
+    "location": "eastus",
+    "name": "kv-logicapp-security",
+    "resourceGroup": "masyan_vpn_rg",
+    "systemData": null,
+    "tags": {},
+    "type": "Microsoft.KeyVault/vaults"
+  }
+]

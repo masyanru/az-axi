@@ -1,0 +1,460 @@
+[
+  {
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/tfstate",
+    "location": "eastus",
+    "managedBy": null,
+    "name": "tfstate",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": null,
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/kv-dev-security",
+    "location": "eastus",
+    "managedBy": null,
+    "name": "kv-dev-security",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": {},
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/1password-scim-bridge-rg",
+    "location": "eastus",
+    "managedBy": null,
+    "name": "1password-scim-bridge-rg",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": {},
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/resource-graph-queries",
+    "location": "eastus",
+    "managedBy": null,
+    "name": "resource-graph-queries",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": null,
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/managed-identities-rg",
+    "location": "eastus",
+    "managedBy": null,
+    "name": "managed-identities-rg",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": {
+      "source": "terraform"
+    },
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/sentinel-connectors",
+    "location": "eastus",
+    "managedBy": null,
+    "name": "sentinel-connectors",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": null,
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/ghas-connectors",
+    "location": "eastus",
+    "managedBy": null,
+    "name": "ghas-connectors",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": null,
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/logic-apps-access-packages",
+    "location": "eastus",
+    "managedBy": null,
+    "name": "logic-apps-access-packages",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": {},
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/security_logs",
+    "location": "eastus",
+    "managedBy": null,
+    "name": "security_logs",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": {},
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/sentinel-dev",
+    "location": "eastus",
+    "managedBy": null,
+    "name": "sentinel-dev",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": {},
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/sync-photos",
+    "location": "eastus",
+    "managedBy": null,
+    "name": "sync-photos",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": {},
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/dd-sa-rg",
+    "location": "eastus",
+    "managedBy": null,
+    "name": "dd-sa-rg",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": {},
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/azure-functions-access-packages",
+    "location": "eastus",
+    "managedBy": null,
+    "name": "azure-functions-access-packages",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": {},
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/poc-logstash",
+    "location": "eastus",
+    "managedBy": null,
+    "name": "poc-logstash",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": {},
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/af-sentinel-connectors",
+    "location": "eastus",
+    "managedBy": null,
+    "name": "af-sentinel-connectors",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": {},
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/logic-apps-sentinel",
+    "location": "eastus",
+    "managedBy": null,
+    "name": "logic-apps-sentinel",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": {},
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/sentintel-logicapps",
+    "location": "eastus",
+    "managedBy": null,
+    "name": "sentintel-logicapps",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": {},
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/tlk-security-eventhub-rg",
+    "location": "eastus",
+    "managedBy": null,
+    "name": "tlk-security-eventhub-rg",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": {
+      "source": "terraform"
+    },
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/DefaultResourceGroup-WEU",
+    "location": "eastus",
+    "managedBy": null,
+    "name": "DefaultResourceGroup-WEU",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": null,
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/access-review-rg",
+    "location": "eastus",
+    "managedBy": null,
+    "name": "access-review-rg",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": {},
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/verified_id_facecheck",
+    "location": "eastus",
+    "managedBy": null,
+    "name": "verified_id_facecheck",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": {},
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/LogAnalyticsDefaultResources",
+    "location": "eastus",
+    "managedBy": null,
+    "name": "LogAnalyticsDefaultResources",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": null,
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/container-apps-sentinel",
+    "location": "eastus",
+    "managedBy": null,
+    "name": "container-apps-sentinel",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": {
+      "source": "terraform"
+    },
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/acmecommunity",
+    "location": "eastus",
+    "managedBy": null,
+    "name": "acmecommunity",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": null,
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/gsuitesentinelacme",
+    "location": "eastus",
+    "managedBy": null,
+    "name": "gsuitesentinelacme",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": null,
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/access-management",
+    "location": "eastus",
+    "managedBy": null,
+    "name": "access-management",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": {},
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/ai_jiraaudit4vmxslnw2refq_34b8c8c0-8ce3-51c3-6ab1-c158914c2e62_managed",
+    "location": "eastus",
+    "managedBy": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/sentinel-connectors/providers/microsoft.insights/components/jiraaudit4vmxslnw2refq",
+    "name": "ai_jiraaudit4vmxslnw2refq_34b8c8c0-8ce3-51c3-6ab1-c158914c2e62_managed",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": {},
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/ai_slackaudit4vmxslnw2refq_18265d6e-c23a-f7ff-d06f-e477c5c68c05_managed",
+    "location": "eastus",
+    "managedBy": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/sentinel-connectors/providers/microsoft.insights/components/slackaudit4vmxslnw2refq",
+    "name": "ai_slackaudit4vmxslnw2refq_18265d6e-c23a-f7ff-d06f-e477c5c68c05_managed",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": {},
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/openai-sentinel-slack",
+    "location": "eastus",
+    "managedBy": null,
+    "name": "openai-sentinel-slack",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": null,
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/echo-server",
+    "location": "eastus",
+    "managedBy": null,
+    "name": "echo-server",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": null,
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/red-teaming",
+    "location": "eastus",
+    "managedBy": null,
+    "name": "red-teaming",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": null,
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/artifact_signing_rg",
+    "location": "eastus",
+    "managedBy": null,
+    "name": "artifact_signing_rg",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": null,
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/apim-poc",
+    "location": "eastus",
+    "managedBy": null,
+    "name": "apim-poc",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": {},
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg-aperture-demo-weu",
+    "location": "eastus",
+    "managedBy": null,
+    "name": "rg-aperture-demo-weu",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": {
+      "environment": "demo",
+      "managedBy": "aperture",
+      "owner": "admin",
+      "purpose": "canary"
+    },
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg-aperture-workloads-weu",
+    "location": "eastus",
+    "managedBy": null,
+    "name": "rg-aperture-workloads-weu",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": {
+      "managedBy": "aperture",
+      "purpose": "workloads"
+    },
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/security-hub-dev",
+    "location": "eastus",
+    "managedBy": null,
+    "name": "security-hub-dev",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": {
+      "env": "dev",
+      "owner": "security",
+      "project": "security-hub"
+    },
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/masyan_vpn_rg",
+    "location": "germanywestcentral",
+    "managedBy": null,
+    "name": "masyan_vpn_rg",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": {},
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/NetworkWatcherRG",
+    "location": "germanywestcentral",
+    "managedBy": null,
+    "name": "NetworkWatcherRG",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": null,
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/github-ado",
+    "location": "eastus",
+    "managedBy": null,
+    "name": "github-ado",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": null,
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/dashboards",
+    "location": "eastus",
+    "managedBy": null,
+    "name": "dashboards",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": null,
+    "type": "Microsoft.Resources/resourceGroups"
+  }
+]
