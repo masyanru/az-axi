@@ -39,7 +39,7 @@ describe("runCommand", () => {
     const out = await domainCommand(DOMAIN_BY_NAME.group!, ["list"]);
     expect(out.count).toBe(1);
     expect(out.items).toEqual([
-      { name: "rg-a", location: "eastus", provisioningState: "Succeeded" },
+      { name: "rg-a", location: "eastus", provisioningState: "Succeeded", type: "Microsoft.Resources/resourceGroups" },
     ]);
   });
 

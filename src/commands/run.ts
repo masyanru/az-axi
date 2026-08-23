@@ -147,9 +147,9 @@ function formatCompact(
     ? [domain.name, ...azArgs.slice(domain.azPrefix.length)].join(" ")
     : azArgs.join(" ");
 
-  const label = domain?.description ?? "results";
+  const label = domain?.name ?? "results";
   if (Array.isArray(compact.payload) && compact.total === 0) {
-    out[domain?.name ?? "results"] = `0 ${label} found in this subscription`;
+    out[label] = `0 ${label} found in this subscription`;
     return out;
   }
 
@@ -163,18 +163,27 @@ function formatCompact(
     out.result = compact.payload;
   }
 
+  const shown = shortCommand(String(out.command));
+  const queryLike = /--analytics-query|--graph-query/.test(String(out.command));
   const help: string[] = [];
   if (compact.truncated) {
-    help.push(`az-axi ${out.command} --limit ${compact.total ?? "N"}`);
+    help.push(`az-axi ${shown} --limit ${compact.total ?? "N"}`);
   }
-  if (!flags.full) {
-    help.push(`az-axi ${out.command} --full`);
+  if (!flags.full && !queryLike) {
+    help.push(`az-axi ${shown} --full`);
   }
-  if (flags.fields === undefined) {
-    help.push(`az-axi ${out.command} --fields name,id,type`);
+  if (flags.fields === undefined && !queryLike) {
+    help.push(`az-axi ${shown} --fields name,id,type`);
   }
   if (help.length > 0) out.help = help;
   return out;
+}
+
+function shortCommand(command: string): string {
+  return command
+    .replace(/\s+--analytics-query\s+\S[\s\S]*/g, "")
+    .replace(/\s+--graph-query\s+\S[\s\S]*/g, "")
+    .trim();
 }
 
 export function getDomainHandler(name: string) {

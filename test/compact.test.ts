@@ -17,7 +17,7 @@ describe("compactAzPayload", () => {
     const rows = result.payload as Array<Record<string, unknown>>;
     expect(result.total).toBe(40);
     expect(rows.length).toBe(40);
-    expect(Object.keys(rows[0] ?? {}).sort()).toEqual(["location", "name", "provisioningState"]);
+    expect(Object.keys(rows[0] ?? {}).sort()).toEqual(["location", "name", "provisioningState", "type"]);
     expect(rows[0]?.name).toBeTruthy();
     expect(rows[0]?.id).toBeUndefined();
   });
@@ -46,6 +46,54 @@ describe("compactAzPayload", () => {
     expect(rows).toHaveLength(2);
     expect(rows[0]?.id).toMatch(/\/resourceGroups\//);
     expect(rows[0]?.location).toBeUndefined();
+  });
+
+  it("keeps flattened log-analytics rows instead of ARM fields", () => {
+    const result = compactAzPayload([
+      {
+        ErrorCode: "ThrottlingException",
+        EventName: "InvokeModelWithResponseStream",
+        TableName: "PrimaryResult",
+        events: "12",
+      },
+    ]);
+    const rows = result.payload as Array<Record<string, unknown>>;
+    expect(rows[0]).toEqual({
+      ErrorCode: "ThrottlingException",
+      EventName: "InvokeModelWithResponseStream",
+      events: "12",
+    });
+  });
+
+  it("keeps type on logic workflows and slims key vault secrets", () => {
+    const mixed = compactAzPayload([
+      {
+        id: "/subscriptions/x/resourceGroups/rg/providers/Microsoft.Logic/workflows/wf",
+        name: "wf",
+        type: "Microsoft.Logic/workflows",
+        location: "eastus",
+        resourceGroup: "rg",
+        properties: { provisioningState: "Succeeded" },
+      },
+    ]);
+    expect((mixed.payload as Array<Record<string, unknown>>)[0]?.type).toBe(
+      "Microsoft.Logic/workflows",
+    );
+
+    const secrets = compactAzPayload([
+      {
+        id: "https://kv.vault.azure.net/secrets/db-pass",
+        name: "db-pass",
+        contentType: "text",
+        attributes: { enabled: true, updated: "2026-01-01T00:00:00Z", created: "2024-01-01T00:00:00Z" },
+      },
+    ]);
+    expect((secrets.payload as Array<Record<string, unknown>>)[0]).toEqual({
+      name: "db-pass",
+      enabled: true,
+      contentType: "text",
+      updated: "2026-01-01T00:00:00Z",
+    });
   });
 });
 

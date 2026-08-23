@@ -96,6 +96,7 @@ const TYPE_FIELDS: Record<string, string[]> = {
   ],
   "microsoft.logic/workflows": [
     "name",
+    "type",
     "resourceGroup",
     "location",
     "state",
@@ -103,10 +104,17 @@ const TYPE_FIELDS: Record<string, string[]> = {
   ],
   "microsoft.kusto/clusters": [
     "name",
+    "type",
     "resourceGroup",
     "location",
     "state",
     "provisioningState",
+  ],
+  "microsoft.authorization/roleassignments": [
+    "roleDefinitionName",
+    "principalName",
+    "principalType",
+    "scope",
   ],
 };
 
@@ -184,10 +192,21 @@ function compactObject(
       : lifted;
   }
   const typeKey = typeof lifted.type === "string" ? lifted.type.toLowerCase() : "";
-  const fields =
+  const armId = typeof lifted.id === "string" && lifted.id.startsWith("/subscriptions/");
+  const secretId = typeof item.id === "string" && item.id.includes(".vault.azure.net/secrets");
+  let fields =
     options.fields ??
-    TYPE_FIELDS[typeKey] ??
-    (isList ? DEFAULT_LIST_FIELDS : DEFAULT_SHOW_FIELDS);
+    (secretId
+      ? ["name", "enabled", "contentType", "updated"]
+      : TYPE_FIELDS[typeKey] ??
+        (armId || typeKey.startsWith("microsoft.")
+          ? isList
+            ? DEFAULT_LIST_FIELDS
+            : DEFAULT_SHOW_FIELDS
+          : Object.keys(item).filter((key) => key !== "TableName" && !key.startsWith("@"))));
+  if (typeof item.type === "string" && !fields.includes("type")) {
+    fields = ["type", ...fields];
+  }
   const out: Record<string, unknown> = {};
   for (const field of fields) {
     if (lifted[field] !== undefined && lifted[field] !== null) {
@@ -212,6 +231,10 @@ function liftFields(item: Record<string, unknown>): Record<string, unknown> {
       ? (configuration.ingress as Record<string, unknown>)
       : undefined;
 
+  const attributes =
+    item.attributes && typeof item.attributes === "object"
+      ? (item.attributes as Record<string, unknown>)
+      : undefined;
   return {
     ...item,
     provisioningState:
@@ -227,6 +250,8 @@ function liftFields(item: Record<string, unknown>): Record<string, unknown> {
     kubernetesVersion: properties?.kubernetesVersion ?? item.kubernetesVersion,
     sku,
     resourceGroup: item.resourceGroup ?? resourceGroupFromId(item.id),
+    enabled: item.enabled ?? attributes?.enabled,
+    updated: item.updated ?? attributes?.updated,
   };
 }
 
@@ -268,6 +293,7 @@ function prune(value: unknown, options: CompactOptions, keepAll: boolean): unkno
 
   const out: Record<string, unknown> = {};
   for (const [key, child] of Object.entries(value as Record<string, unknown>)) {
+    if (key.startsWith("@")) continue;
     if (child === null || child === undefined) continue;
     if (!keepAll && DROP_DEFAULT[key]) continue;
     if (Array.isArray(child) && child.length === 0) continue;
