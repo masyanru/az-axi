@@ -12,7 +12,7 @@
   },
   "type": "module",
   "bin": {
-    "az-axi": "./dist/bin/az-axi.js"
+    "az-axi": "dist/bin/az-axi.js"
   },
   "files": [
     "dist",
@@ -25,6 +25,7 @@
     "build:skill": "tsx scripts/build-skill.ts",
     "skill:check": "tsx scripts/build-skill.ts --check",
     "dev": "tsx bin/az-axi.ts",
+    "prepublishOnly": "npm run build && npm test && npm run skill:check",
     "test": "vitest run",
     "test:watch": "vitest"
   },
