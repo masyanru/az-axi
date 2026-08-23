@@ -9,14 +9,10 @@ Stack: TypeScript, Node 20+, `axi-sdk-js`. The binary only **spawns** `az` — i
 Requires [Azure CLI](https://learn.microsoft.com/cli/azure/install-azure-cli) and Node 20+.
 
 ```sh
-git clone https://github.com/masyanru/az-axi.git
-cd az-axi
-npm install
-npm run build
-node dist/bin/az-axi.js doctor
+npx -y az-axi
+npx -y az-axi doctor
+npm install -g az-axi
 ```
-
-Or from a checkout: `npx tsx bin/az-axi.ts`.
 
 Agent skill:
 
