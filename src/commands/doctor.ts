@@ -1,24 +1,32 @@
+import { parseAxiFlags } from "../args.js";
 import { azJson, azRaw } from "../az.js";
 import { REQUIRED_EXTENSIONS, DOMAINS } from "../domains.js";
+import { AxiError } from "../errors.js";
 import type { AzContext } from "../context.js";
 
 type Check = { check: string; status: string; detail: string };
 
-export async function doctorCommand(_args: string[], _ctx?: AzContext): Promise<Record<string, unknown>> {
-  const checks: Check[] = [];
+export async function doctorCommand(args: string[], _ctx?: AzContext): Promise<Record<string, unknown>> {
+  const flags = parseAxiFlags(args, { command: "doctor" });
+  if (flags.rest.length > 0) {
+    throw new AxiError(`unexpected argument ${flags.rest[0]} for \`doctor\``, "VALIDATION_ERROR", [
+      "az-axi doctor",
+    ]);
+  }
 
+  const checks: Check[] = [];
   const version = await azRaw(["version", "-o", "json"]);
   if (version.exitCode !== 0) {
-    checks.push({ check: "az-cli", status: "error", detail: "az is not usable" });
+    checks.push({ check: "azure-cli", status: "error", detail: "Azure CLI is not usable" });
   } else {
-    let azVersion = "ok";
+    let cliVersion = "ok";
     try {
       const parsed = JSON.parse(version.stdout) as { "azure-cli"?: string };
-      azVersion = parsed["azure-cli"] ?? "ok";
+      cliVersion = parsed["azure-cli"] ?? "ok";
     } catch {
-      azVersion = "ok";
+      cliVersion = "ok";
     }
-    checks.push({ check: "az-cli", status: "ok", detail: azVersion });
+    checks.push({ check: "azure-cli", status: "ok", detail: cliVersion });
   }
 
   try {
@@ -48,17 +56,13 @@ export async function doctorCommand(_args: string[], _ctx?: AzContext): Promise<
     checks.push({
       check: `ext:${name}`,
       status: have[name] ? "ok" : "missing",
-      detail: have[name] ?? `az extension add --name ${name}`,
+      detail: have[name] ?? `install the ${name} extension, then az-axi doctor`,
     });
   }
 
-  const firstClass = DOMAINS.map((domain) => domain.name).join("|");
   return {
     checks,
-    first_class: firstClass,
-    help: [
-      "Install missing extensions, then rerun `az-axi doctor`",
-      "Mutations still need `--execute`",
-    ],
+    first_class: DOMAINS.map((domain) => domain.name).join("|"),
+    help: ["az-axi services", "Mutations need --execute"],
   };
 }

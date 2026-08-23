@@ -1,5 +1,6 @@
 import { afterEach, describe, expect, it } from "vitest";
 import { resetAzRunner, setAzRunner } from "../src/az.js";
+import { doctorCommand } from "../src/commands/doctor.js";
 import { domainCommand, runCommand } from "../src/commands/run.js";
 import { DOMAIN_BY_NAME } from "../src/domains.js";
 import { AxiError } from "../src/errors.js";
@@ -40,5 +41,31 @@ describe("runCommand", () => {
     expect(out.items).toEqual([
       { name: "rg-a", location: "eastus", provisioningState: "Succeeded" },
     ]);
+  });
+
+  it("names empty lists with context", async () => {
+    setAzRunner(async () => ({ stdout: "[]", stderr: "", exitCode: 0 }));
+    const out = await domainCommand(DOMAIN_BY_NAME.aks!, ["list"]);
+    expect(out.aks).toMatch(/0 .+ found in this subscription/);
+    expect(out.items).toBeUndefined();
+  });
+
+  it("treats create-already-exists as a no-op", async () => {
+    setAzRunner(async () => ({
+      stdout: "",
+      stderr: "ERROR: A resource group with the same name already exists",
+      exitCode: 1,
+    }));
+    const out = await domainCommand(DOMAIN_BY_NAME.group!, ["create", "-n", "rg-x", "--execute"]);
+    expect(out.result).toMatch(/already in desired state/);
+  });
+});
+
+describe("doctorCommand", () => {
+  it("rejects unknown flags before calling Azure", async () => {
+    await expect(doctorCommand(["--axi-probe-unknown-flag"])).rejects.toMatchObject({
+      code: "VALIDATION_ERROR",
+      message: expect.stringMatching(/unknown flag/),
+    });
   });
 });

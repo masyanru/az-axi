@@ -4,9 +4,9 @@ export { AxiError, exitCodeForError };
 
 export function azNotInstalledError(): AxiError {
   return new AxiError(
-    "az CLI is not installed — see https://learn.microsoft.com/cli/azure/install-azure-cli",
+    "Azure CLI is not installed",
     "AZ_NOT_INSTALLED",
-    ["Install Azure CLI, then run `az-axi doctor`"],
+    ["Install Azure CLI from https://learn.microsoft.com/cli/azure/install-azure-cli", "Then run `az-axi doctor`"],
   );
 }
 
@@ -14,27 +14,30 @@ export function mapAzError(text: string, exitCode: number): AxiError {
   const message = firstErrorLine(text);
 
   if (/please run 'az login'|az login/i.test(text)) {
-    return new AxiError(
-      "Azure auth required — run `az login` in a human terminal",
-      "AUTH_REQUIRED",
-      ["Then rerun `az-axi doctor`"],
-    );
+    return new AxiError("Azure auth required", "AUTH_REQUIRED", [
+      "Authenticate Azure in a human terminal",
+      "Then rerun `az-axi doctor`",
+    ]);
   }
 
   if (/subscription.*not found|please explicitly select/i.test(text)) {
-    return new AxiError(message || "No Azure subscription selected", "AUTH_REQUIRED", [
+    return new AxiError("No Azure subscription selected", "AUTH_REQUIRED", [
       "Run `az-axi account list`",
-      "Run `az-axi az account set --subscription <id>` --execute",
+      "Run `az-axi account set --subscription <id> --execute`",
     ]);
   }
 
   if (/the command requires the extension|extension .* not installed/i.test(text)) {
-    return new AxiError(message || "Required az extension is missing", "EXTENSION_MISSING", [
+    return new AxiError("Required Azure CLI extension is missing", "EXTENSION_MISSING", [
       "Run `az-axi doctor` to see missing extensions",
     ]);
   }
 
-  if (/not found|could not be found|resource.*does not exist/i.test(text)) {
+  if (/already exists|already in use|already taken|conflict/i.test(text)) {
+    return new AxiError(message || "Resource already exists", "ALREADY_EXISTS");
+  }
+
+  if (/not found|could not be found|resource.*does not exist|could not find/i.test(text)) {
     return new AxiError(message || "Azure resource not found", "NOT_FOUND");
   }
 
@@ -42,14 +45,20 @@ export function mapAzError(text: string, exitCode: number): AxiError {
     return new AxiError(message || "Insufficient Azure permissions", "FORBIDDEN");
   }
 
-  if (exitCode === 2) {
-    return new AxiError(message || "Invalid az arguments", "VALIDATION_ERROR", [
-      "Run `az-axi services` to find the command",
-      "Run `az-axi az <group> --help` for flags",
+  if (/misspelled or not recognized|unrecognized arguments|unrecognized arguments:/i.test(text)) {
+    return new AxiError(message || "Unknown flag or argument", "VALIDATION_ERROR", [
+      `valid flags: --subscription, --resource-group/-g, --fields, --limit, --full, --reveal, --execute, --confirm-subscription (--help always allowed)`,
     ]);
   }
 
-  return new AxiError(message || `az exited with code ${exitCode}`, "UNKNOWN");
+  if (exitCode === 2) {
+    return new AxiError(message || "Invalid arguments", "VALIDATION_ERROR", [
+      "Run `az-axi services` to find the command",
+      "Run `az-axi <command> --help` for flags",
+    ]);
+  }
+
+  return new AxiError(message || `Azure command failed (${exitCode})`, "UNKNOWN");
 }
 
 function firstErrorLine(text: string): string {

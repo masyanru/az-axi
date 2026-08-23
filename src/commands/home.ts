@@ -1,6 +1,6 @@
 import { azJson } from "../az.js";
 import { compactAzPayload } from "../compact.js";
-import { DOMAINS, REQUIRED_EXTENSIONS } from "../domains.js";
+import { REQUIRED_EXTENSIONS } from "../domains.js";
 import type { AzContext } from "../context.js";
 
 type AccountShow = {
@@ -14,12 +14,18 @@ type AccountShow = {
 type ExtensionRow = { name?: string; version?: string };
 
 export async function homeCommand(_args: string[], ctx?: AzContext): Promise<Record<string, unknown>> {
-  const account = await azJson<AccountShow>(["account", "show"]);
-  const groupsRaw = await azJson<unknown[]>(["group", "list"]);
+  const [account, groupsRaw, extensions] = await Promise.all([
+    azJson<AccountShow>(["account", "show"]),
+    azJson<unknown[]>(["group", "list"]),
+    azJson<ExtensionRow[]>(["extension", "list"]).catch(() => [] as ExtensionRow[]),
+  ]);
   const groups = compactAzPayload(groupsRaw, { limit: 8, fields: ["name", "location"] });
-  const extensions = await azJson<ExtensionRow[]>(["extension", "list"]).catch(() => []);
-  const installed = new Set((extensions ?? []).map((row) => row.name).filter(Boolean));
-  const missing = REQUIRED_EXTENSIONS.filter((name) => !installed.has(name));
+  const installed: Record<string, true> = {};
+  for (const row of extensions ?? []) {
+    if (row.name) installed[row.name] = true;
+  }
+  const missing = REQUIRED_EXTENSIONS.filter((name) => installed[name] !== true);
+  const groupCount = Array.isArray(groupsRaw) ? groupsRaw.length : 0;
 
   return {
     azure: {
@@ -29,17 +35,17 @@ export async function homeCommand(_args: string[], ctx?: AzContext): Promise<Rec
       tenant: account?.tenantId ?? "",
       user: account?.user?.name ?? "",
     },
-    groups_count: Array.isArray(groupsRaw) ? groupsRaw.length : 0,
-    groups: groups.payload,
+    groups_count: groupCount,
+    groups: groupCount === 0 ? "0 resource groups found in this subscription" : groups.payload,
     extensions: {
-      installed: installed.size,
+      installed: Object.keys(installed).length,
       required_missing: missing.length,
     },
-    domains: DOMAINS.length,
-    help: [
-      "Run `az-axi doctor` to check az, login, and required extensions",
-      "Run `az-axi services` to list installed az groups",
-      "Run `az-axi az <group> list` for any module; first-class nouns skip the `az` prefix",
+    commands: [
+      { command: "doctor", use: "check login and extensions" },
+      { command: "services", use: "list first-class nouns" },
+      { command: "group", use: "resource groups" },
     ],
+    help: ["az-axi doctor", "az-axi services", "az-axi group list"],
   };
 }

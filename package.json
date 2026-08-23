@@ -1,6 +1,6 @@
 {
   "name": "az-axi",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Agent-facing Azure CLI AXI: compact TOON output over every az module.",
   "repository": {
     "type": "git",
@@ -22,6 +22,8 @@
   ],
   "scripts": {
     "build": "tsc",
+    "build:skill": "tsx scripts/build-skill.ts",
+    "skill:check": "tsx scripts/build-skill.ts --check",
     "dev": "tsx bin/az-axi.ts",
     "test": "vitest run",
     "test:watch": "vitest"

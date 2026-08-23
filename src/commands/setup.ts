@@ -3,14 +3,14 @@ import { AxiError } from "../errors.js";
 import { parseAxiFlags } from "../args.js";
 
 export async function setupCommand(args: string[]): Promise<Record<string, unknown>> {
-  const flags = parseAxiFlags(args);
-  if (flags.rest[0] !== "hooks") {
-    throw new AxiError("unknown setup command", "VALIDATION_ERROR", ["Run `az-axi setup hooks`"]);
+  const flags = parseAxiFlags(args, { command: "setup" });
+  if (flags.rest[0] !== "hooks" || flags.rest.length !== 1) {
+    throw new AxiError("unknown setup command", "VALIDATION_ERROR", ["az-axi setup hooks"]);
   }
   if (!flags.execute) {
     return {
       setup: "hooks dry-run",
-      help: ["Re-run `az-axi setup hooks --execute` to install SessionStart hooks"],
+      help: ["az-axi setup hooks --execute"],
     };
   }
   await installSessionStartHooks({

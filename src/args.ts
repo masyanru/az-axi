@@ -1,3 +1,6 @@
+import { AxiError } from "./errors.js";
+import { AXI_FLAGS } from "./help.js";
+
 export type AxiFlags = {
   execute: boolean;
   full: boolean;
@@ -8,6 +11,11 @@ export type AxiFlags = {
   resourceGroup?: string;
   confirmSubscription?: string;
   rest: string[];
+};
+
+export type ParseAxiOptions = {
+  command: string;
+  allowUnknown?: boolean;
 };
 
 const VALUE_FLAGS: Record<
@@ -28,7 +36,7 @@ const BOOLEAN_FLAGS: Record<string, "execute" | "full" | "reveal"> = {
   "--reveal": "reveal",
 };
 
-export function parseAxiFlags(args: string[]): AxiFlags {
+export function parseAxiFlags(args: string[], options: ParseAxiOptions): AxiFlags {
   const flags: AxiFlags = {
     execute: false,
     full: false,
@@ -43,7 +51,7 @@ export function parseAxiFlags(args: string[]): AxiFlags {
     const boolKey = BOOLEAN_FLAGS[rawName];
     if (boolKey) {
       if (inline !== undefined) {
-        throw usage(`${rawName} does not take a value`);
+        throw usage(`${rawName} does not take a value`, options.command);
       }
       flags[boolKey] = true;
       continue;
@@ -53,11 +61,15 @@ export function parseAxiFlags(args: string[]): AxiFlags {
     if (valueKey) {
       const value = inline ?? args[index + 1];
       if (value === undefined || value.startsWith("--")) {
-        throw usage(`${rawName} requires a value`);
+        throw usage(`${rawName} requires a value`, options.command);
       }
       if (inline === undefined) index += 1;
-      assignValue(flags, valueKey, value);
+      assignValue(flags, valueKey, value, options.command);
       continue;
+    }
+
+    if (arg.startsWith("-") && options.allowUnknown !== true) {
+      throw usage(`unknown flag ${rawName} for \`${options.command}\``, options.command);
     }
 
     flags.rest.push(arg);
@@ -77,6 +89,7 @@ function assignValue(
   flags: AxiFlags,
   key: "fields" | "limit" | "subscription" | "resourceGroup" | "confirmSubscription",
   value: string,
+  command: string,
 ): void {
   if (key === "fields") {
     flags.fields = value
@@ -88,7 +101,7 @@ function assignValue(
   if (key === "limit") {
     const parsed = Number(value);
     if (!Number.isInteger(parsed) || parsed < 1) {
-      throw usage("--limit must be a positive integer");
+      throw usage("--limit must be a positive integer", command);
     }
     flags.limit = parsed;
     return;
@@ -96,10 +109,10 @@ function assignValue(
   flags[key] = value;
 }
 
-function usage(message: string): never {
-  const error = new Error(message);
-  error.name = "VALIDATION_ERROR";
-  throw error;
+function usage(message: string, command: string): never {
+  throw new AxiError(message, "VALIDATION_ERROR", [
+    `valid flags for \`${command}\`: ${AXI_FLAGS}`,
+  ]);
 }
 
 export const MUTATING_VERBS: Record<string, true> = {

@@ -2,17 +2,11 @@ import { describe, expect, it } from "vitest";
 import { isInteractive, isMutating, parseAxiFlags } from "../src/args.js";
 
 describe("parseAxiFlags", () => {
-  it("strips axi flags and keeps az args", () => {
-    const parsed = parseAxiFlags([
-      "list",
-      "-g",
-      "rg-app",
-      "--limit",
-      "5",
-      "--fields",
-      "name,location",
-      "--execute",
-    ]);
+  it("strips axi flags and keeps command args", () => {
+    const parsed = parseAxiFlags(
+      ["list", "-g", "rg-app", "--limit", "5", "--fields", "name,location", "--execute"],
+      { command: "group", allowUnknown: true },
+    );
     expect(parsed.rest).toEqual(["list"]);
     expect(parsed.resourceGroup).toBe("rg-app");
     expect(parsed.limit).toBe(5);
@@ -21,7 +15,15 @@ describe("parseAxiFlags", () => {
   });
 
   it("rejects empty --limit", () => {
-    expect(() => parseAxiFlags(["list", "--limit", "nope"])).toThrow(/positive integer/);
+    expect(() => parseAxiFlags(["list", "--limit", "nope"], { command: "group" })).toThrow(
+      /positive integer/,
+    );
+  });
+
+  it("rejects unknown flags in strict mode", () => {
+    expect(() => parseAxiFlags(["--axi-probe-unknown-flag"], { command: "doctor" })).toThrow(
+      /unknown flag/,
+    );
   });
 });
 
