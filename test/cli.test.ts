@@ -17,6 +17,14 @@ describe("runCommand", () => {
     });
   });
 
+  it("suggests a runnable --execute command for mutations", async () => {
+    await expect(runCommand(["vm", "deallocate", "-n", "vm-a", "-g", "rg-a"])).rejects.toMatchObject({
+      suggestions: expect.arrayContaining([
+        expect.stringContaining("az-axi az vm deallocate -n vm-a -g rg-a --execute"),
+      ]),
+    });
+  });
+
   it("blocks interactive login", async () => {
     await expect(runCommand(["login"])).rejects.toBeInstanceOf(AxiError);
   });

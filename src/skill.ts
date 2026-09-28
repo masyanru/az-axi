@@ -19,7 +19,7 @@ user-invocable: false
 ${DESCRIPTION}
 
 Invoke with \`npx -y az-axi <command>\`. If output suggests \`az-axi ...\`, run it as \`npx -y az-axi ...\`.
-Requires Azure CLI installed and authenticated in a human terminal. Mutations need \`--execute\`. Secret values stay redacted unless \`--reveal\`.
+Requires Azure CLI installed and authenticated in a human terminal. Anything that is not a read verb (list, show, get, query, list-*, show-*, ...) needs \`--execute\`. Secret values stay redacted unless \`--reveal\`.
 
 ## Workflow
 

@@ -61,9 +61,12 @@ async function executeAz(
   }
 
   if (isMutating(azArgs) && !flags.execute) {
-    const shown = domain ? [domain.name, ...azArgs.slice(domain.azPrefix.length)] : azArgs;
+    const shown = domain ? [domain.name, ...azArgs.slice(domain.azPrefix.length)] : ["az", ...azArgs];
+    if (flags.subscription) shown.push("--subscription", flags.subscription);
+    if (flags.resourceGroup) shown.push("-g", flags.resourceGroup);
     throw new AxiError("mutation requires --execute", "VALIDATION_ERROR", [
       `Dry-run only. Re-run with --execute: az-axi ${shown.join(" ")} --execute`,
+      "Only read verbs (list, show, get, query, list-*, show-*, ...) skip --execute; add --help to browse subcommands",
     ]);
   }
 

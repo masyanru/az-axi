@@ -34,7 +34,7 @@ az-axi bench containerapp list # o200k token comparison
 az-axi group create -n rg-x --execute
 ```
 
-Mutations need `--execute`. Production mutations can add `--confirm-subscription <id>`. Key Vault secret values are never printed unless `--reveal`.
+Anything that is not a read verb (`list`, `show`, `get`, `query`, `list-*`, `show-*`, …) is treated as a mutation and needs `--execute`. Production mutations can add `--confirm-subscription <id>`. Key Vault secret values are never printed unless `--reveal`.
 
 ## Tests
 

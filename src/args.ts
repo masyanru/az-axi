@@ -115,45 +115,39 @@ function usage(message: string, command: string): never {
   ]);
 }
 
-export const MUTATING_VERBS: Record<string, true> = {
-  create: true,
-  delete: true,
-  update: true,
-  set: true,
-  add: true,
-  remove: true,
-  start: true,
-  stop: true,
-  restart: true,
-  scale: true,
-  upgrade: true,
-  apply: true,
-  deploy: true,
-  import: true,
-  export: true,
-  purge: true,
-  recover: true,
-  restore: true,
-  backup: true,
-  invoke: true,
-  run: true,
-  enable: true,
-  disable: true,
-  assign: true,
-  attach: true,
-  detach: true,
-  rotate: true,
-  reset: true,
-  move: true,
-  lock: true,
-  unlock: true,
-  grant: true,
-  revoke: true,
-  install: true,
-  uninstall: true,
-  up: true,
-  down: true,
+// Allowlist: a command runs without --execute only when its leaf verb is known
+// to be read-only. Anything else — including verbs added in future az releases —
+// is treated as a mutation.
+const READ_VERBS: Record<string, true> = {
+  show: true,
+  list: true,
+  get: true,
+  wait: true,
+  exists: true,
+  query: true,
+  check: true,
+  status: true,
+  stats: true,
+  summarize: true,
+  search: true,
+  find: true,
+  version: true,
+  validate: true,
+  "what-if": true,
+  peek: true,
 };
+
+const READ_VERB_PREFIXES = ["show-", "list-", "get-", "check-", "query-", "validate-"];
+
+// Read-shaped names that still change state: local kubeconfig files, or a
+// probe pod deployed into the cluster.
+const NOT_READ_VERBS: Record<string, true> = {
+  "get-credentials": true,
+  "get-admin-kubeconfig": true,
+  "check-acr": true,
+};
+
+const READ_REST_METHODS: Record<string, true> = { get: true, head: true };
 
 export const INTERACTIVE_COMMANDS = [
   ["login"],
@@ -164,6 +158,9 @@ export const INTERACTIVE_COMMANDS = [
   ["aks", "browse"],
   ["containerapp", "exec"],
   ["containerapp", "debug"],
+  ["webapp", "exec"],
+  ["webapp", "ssh"],
+  ["webapp", "create-remote-connection"],
   ["ssh", "vm"],
   ["ssh", "arc"],
   ["bastion", "ssh"],
@@ -173,7 +170,28 @@ export const INTERACTIVE_COMMANDS = [
 ];
 
 export function isMutating(azArgs: string[]): boolean {
-  return azArgs.some((arg) => !arg.startsWith("-") && MUTATING_VERBS[arg] === true);
+  if (azArgs.some((arg) => arg === "--help" || arg === "-h")) return false;
+  const path = commandPath(azArgs);
+  if (path[0] === "rest") return !READ_REST_METHODS[restMethod(azArgs)];
+  if (path[0] === "find" || (path.length === 1 && path[0] === "version")) return false;
+  const verb = path.at(-1);
+  if (!verb || NOT_READ_VERBS[verb]) return true;
+  return !(READ_VERBS[verb] || READ_VERB_PREFIXES.some((prefix) => verb.startsWith(prefix)));
+}
+
+function commandPath(azArgs: string[]): string[] {
+  const end = azArgs.findIndex((arg) => arg.startsWith("-"));
+  return end === -1 ? azArgs : azArgs.slice(0, end);
+}
+
+function restMethod(azArgs: string[]): string {
+  for (let index = 0; index < azArgs.length; index += 1) {
+    const [name, inline] = splitInline(azArgs[index] ?? "");
+    if (name === "--method" || name === "-m") {
+      return (inline ?? azArgs[index + 1] ?? "").toLowerCase();
+    }
+  }
+  return "get";
 }
 
 export function isInteractive(azArgs: string[]): boolean {
