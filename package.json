@@ -51,5 +51,8 @@
     "axi",
     "toon",
     "agent"
-  ]
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  }
 }
